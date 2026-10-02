@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <rect width="1200" height="720" rx="24" fill="#111116"/>
+  <text x="42" y="58" fill="#f0eef8" font-family="Segoe UI" font-size="26" font-weight="700">AI VIRTUAL TRY-ON</text>
+  <text x="1160" y="56" text-anchor="end" fill="#aaa3bb" font-family="Segoe UI" font-size="15">Local · Private · CatVTON ready</text>
+  <g fill="#191820" stroke="#393548" stroke-width="2">
+    <rect x="42" y="88" width="540" height="245" rx="14"/>
+    <rect x="618" y="88" width="540" height="245" rx="14"/>
+    <rect x="42" y="420" width="1116" height="245" rx="14"/>
+  </g>
+  <g fill="#aaa3bb" font-family="Segoe UI" font-size="16" font-weight="700">
+    <text x="62" y="120">PERSON</text><text x="638" y="120">GARMENT</text><text x="62" y="452">RESULT</text>
+  </g>
+  <g fill="none" stroke="#675c7a" stroke-width="2" stroke-dasharray="8 7">
+    <rect x="62" y="139" width="500" height="170" rx="10"/><rect x="638" y="139" width="500" height="170" rx="10"/>
+  </g>
+  <g fill="#8f899d" font-family="Segoe UI" font-size="17" text-anchor="middle">
+    <text x="312" y="220">Drop a person image</text><text x="888" y="220">Drop clothing from Explorer or a browser</text>
+  </g>
+  <rect x="475" y="354" width="250" height="48" rx="9" fill="#7357e8"/>
+  <text x="600" y="385" fill="white" font-family="Segoe UI" font-size="17" font-weight="700" text-anchor="middle">GENERATE TRY-ON</text>
+  <text x="600" y="565" fill="#8f899d" font-family="Segoe UI" font-size="19" text-anchor="middle">Generated image appears here</text>
+</svg>

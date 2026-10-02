@@ -1,0 +1,1 @@
+"""Safe image ingestion utilities."""

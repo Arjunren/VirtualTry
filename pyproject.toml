@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "virtualtry"
+version = "0.1.0"
+description = "Local-first Windows desktop frontend for real AI virtual try-on"
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+license = {text = "MIT"}
+authors = [{name = "Arjunren"}]
+dependencies = [
+  "Pillow==10.3.0",
+  "PySide6==6.8.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.5",
+  "pytest-qt==4.4.0",
+  "ruff==0.11.2",
+  "mypy==1.15.0",
+  "pyinstaller==6.12.0",
+]
+
+[project.scripts]
+virtualtry = "virtual_tryon.app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
