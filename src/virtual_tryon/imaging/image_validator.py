@@ -27,7 +27,8 @@ def _decode(data: bytes, limits: ImageLimits) -> Image.Image:
     if not data:
         raise ImageValidationError("The image is empty.")
     if len(data) > limits.max_file_bytes:
-        raise ImageValidationError("The image exceeds the configured 20 MB size limit.")
+        max_mb = limits.max_file_bytes / (1024 * 1024)
+        raise ImageValidationError(f"The image exceeds the configured {max_mb:g} MB size limit.")
 
     try:
         with warnings.catch_warnings():
@@ -73,7 +74,8 @@ def validate_image_path(path: str | Path, limits: ImageLimits | None = None) -> 
         if not candidate.is_file():
             raise ImageValidationError("The dropped item is not a file.")
         if candidate.stat().st_size > image_limits.max_file_bytes:
-            raise ImageValidationError("The image exceeds the configured 20 MB size limit.")
+            max_mb = image_limits.max_file_bytes / (1024 * 1024)
+            raise ImageValidationError(f"The image exceeds the configured {max_mb:g} MB size limit.")
         return _decode(candidate.read_bytes(), image_limits)
     except ImageValidationError:
         raise

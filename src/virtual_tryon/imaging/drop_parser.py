@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from PySide6.QtCore import QBuffer, QByteArray, QIODevice, QMimeData, QUrl
-from PySide6.QtGui import QImage
+from PySide6.QtGui import QImage, QPixmap
 
 LOGGER = logging.getLogger(__name__)
 
@@ -23,7 +23,10 @@ class DropCandidate:
 
 
 def _qimage_to_png(image_data: object) -> bytes | None:
-    image = QImage(image_data) if not isinstance(image_data, QImage) else image_data
+    if isinstance(image_data, QPixmap):
+        image = image_data.toImage()
+    else:
+        image = QImage(image_data) if not isinstance(image_data, QImage) else image_data
     if image.isNull():
         return None
     payload = QByteArray()

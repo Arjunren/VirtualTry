@@ -364,6 +364,11 @@ class MainWindow(QMainWindow):
         if not filename:
             return
         destination = Path(filename)
+        suffix = destination.suffix.lower()
+        if not suffix:
+            suffix = ".jpg" if "JPEG" in selected_filter else ".png"
+            destination = destination.with_suffix(suffix)
+        image_format = "JPEG" if suffix in {".jpg", ".jpeg"} else "PNG"
         if destination.exists():
             answer = QMessageBox.question(
                 self,
@@ -376,8 +381,6 @@ class MainWindow(QMainWindow):
                 return
         try:
             destination.parent.mkdir(parents=True, exist_ok=True)
-            wants_jpeg = destination.suffix.lower() in {".jpg", ".jpeg"} or "JPEG" in selected_filter
-            image_format = "JPEG" if wants_jpeg else "PNG"
             self.result_image.save(destination, format=image_format, quality=95)
             self.status_label.setText("Result saved")
         except OSError as error:
